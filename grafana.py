@@ -26,4 +26,4 @@ def getUsers():
 
 
 getFolders()
-# getUsers()
+getUsers()
