@@ -12,18 +12,21 @@ headers = {
 }
 
 def getFolders():
-  print("Hello from a function")
+  # print("calling /api/folders")
   conn.request("GET", "/api/folders", payload, headers)
   res = conn.getresponse()
   data = res.read()
-  print(data.decode("utf-8"))
+  return data.decode("utf-8")
 
 def getUsers():
   conn.request("GET", "/api/org/users", payload, headers)
   res = conn.getresponse()
   data = res.read()
-  print(data.decode("utf-8"))
+  return data.decode("utf-8")
 
 
-getFolders()
-# getUsers()
+usersJson = getUsers()
+foldersJson = getFolders()
+
+print (foldersJson)
+print (usersJson)
