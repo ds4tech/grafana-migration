@@ -22,11 +22,22 @@ def getUsers():
   conn.request("GET", "/api/org/users", payload, headers)
   res = conn.getresponse()
   data = res.read()
-  return data.decode("utf-8")
+  return (data.decode("utf-8"))
+
+def printUserLogins():
+  usersJson = json.loads(getUsers())
+  for user in range(len(usersJson)):
+    print(user, usersJson[user]["login"])
+
+def printFolderNames():
+  foldersJson = json.loads(getFolders())
+  for folder in range(len(foldersJson)):
+    print(folder, foldersJson[folder]["title"])
 
 
-usersJson = getUsers()
-foldersJson = getFolders()
+printUserLogins()
+printFolderNames()
 
-print (foldersJson)
-print (usersJson)
+foldersJson = json.loads(getFolders())
+
+print(foldersJson)
